@@ -11,7 +11,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
     public String getCustomerName(){
-        return customerName;
+        return customerName;}
 
     public void displayCustomer() {
         System.out.println("Customer ID: " + customerId);

@@ -1,6 +1,6 @@
 //this class stores info about a movie
 public class Movie{
-    public String movieName;
+    private String movieName;
     private String movieGenre;
     private int duration;
     private double ticketPrice;

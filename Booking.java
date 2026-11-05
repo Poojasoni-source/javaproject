@@ -13,12 +13,15 @@ public class Booking{
     }
     public void displayBooking(){
         System.out.println("Booking ID: "+ bookingId);
-        System.out.println("customer name: "+customer.getCustomerName();
-        System.out.println("Movie Name: "+ movie.getMovieName();
-        System.out.println("Seat number: "+ seat.getSeatNumber();
+        System.out.println("customer name: "+customer.getCustomerName());
+        System.out.println("Movie Name: "+ movie.getMovieName());
+        System.out.println("Seat number: "+ seat.getSeatNumber());
     } 
-    public static void main(String[] args){
-        Booking b1= new Booking()
-
+   
+    public int getBookingId(){
+        return bookingId;
     }
+    public Seat getSeat() {
+    return seat;
+}
 }

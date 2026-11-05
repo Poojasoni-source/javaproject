@@ -7,6 +7,9 @@ public class Seat{
     public String getSeatNumber(){
         return seatNumber;
     }
+    public boolean getIsBooked(){
+        return isBooked;
+    }
     public void displayStatus(){
         System.out.println("seatNumber: "+ seatNumber);
         
@@ -26,7 +29,11 @@ public class Seat{
         isBooked = true;
         System.out.println("Seat booked successfully!");
     }
+    }
+    public void cancelSeat() {
+    isBooked = false;
 }
+
     public static void main(String[] args){
         Seat seatNumb=new Seat("23");
         seatNumb.displayStatus();
