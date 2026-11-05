@@ -6,6 +6,7 @@ public class Seat{
     }
     public String getSeatNumber(){
         return seatNumber;
+    }
     public void displayStatus(){
         System.out.println("seatNumber: "+ seatNumber);
         
