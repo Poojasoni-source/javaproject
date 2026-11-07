@@ -27,6 +27,10 @@ public synchronized void bookTicket(Customer customer, Movie movie,Seat seat){//
 
         booking.displayBooking();
     }
+    //Why do both threads share one BookingSystem object?
+//Because synchronized locks the object on which the method is called.
+//- Both threads use the same object → they share the same lock → one thread books first, and the other waits.
+//- If they use two different BookingSystem objects → each has its own lock → both could enter bookTicket() simultaneously and cause a race condition
 
 
 }
