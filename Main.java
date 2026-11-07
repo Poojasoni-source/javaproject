@@ -10,45 +10,46 @@ public class Main {
 
         // Create Seats
         Seat s1 = new Seat("A1");
-        Seat s2 = new Seat("A2");
-        Seat s3 = new Seat("A3");
-
-        // Add seats to Theatre
-        theatre.addSeat(s1);
-        theatre.addSeat(s2);
-        theatre.addSeat(s3);
-
+        
+        
         // Create Customer
-        Customer customer = new Customer(101, "Pooja", "9898989898");
+        Customer c1 = new Customer(101, "Pooja", "9898989898");
+        Customer c2 = new Customer(102,"Yukti","9090909090");
 
-        // Create Booking System
-        BookingSystem system = new BookingSystem();
+        // Creating one shared Booking System
+        BookingSystem system = new BookingSystem();      
 
-        // Display Movie
-        movie.displayMovie();
+        //creating two booking tasks for the same seat
+        BookingTask task1 =new BookingTask(system,c1,movie,s1);
+        BookingTask task2 =new BookingTask(system,c2,movie,s1);
+        
+        //create two threads
+        Thread t1=new Thread(task1);
+        Thread t2=new Thread(task2);
 
-        // Display available seats
-        System.out.println("\nAvailable Seats:");
-        theatre.displaySeats();
+        //start both threads
+        t1.start();
+        t2.start();
 
-        // Book Ticket
-        System.out.println("\nBooking Ticket:");
-        system.bookTicket(customer, movie, s1);
+        //wait for both threads to finsih
+        try{
+            t1.join();//join() makes the current thread (here, main) wait until the specified thread finishes.
+            t2.join();//Without join(), the main thread might display seat status before both booking threads have finished.
 
-        // Display All Bookings
-        System.out.println("\nAll Bookings:");
+        }
+        catch(InterruptedException e){
+            System.out.println(e.getMessage());
+
+        }
+
+        //dispay final saet status
+        System.out.println(" final seat status");
+        s1.displayStatus();
+
+        //Display all successful bookings
+        System.out.println("All bookings");
         system.displayBookings();
 
-        // Try booking the same seat again
-        System.out.println("\nTrying to book the same seat:");
-        system.bookTicket(customer, movie, s1);
 
-        // Cancel Booking
-        System.out.println("\nCancelling Booking:");
-        system.cancelBooking(1001);
-
-        // Display seats after cancellation
-        System.out.println("\nSeats after cancellation:");
-        theatre.displaySeats();
     }
 }
