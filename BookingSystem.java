@@ -11,7 +11,7 @@ public class BookingSystem {
 }
 public int generateBookingId(){
     return ++bookingCounter;}
-public void bookTicket(Customer customer, Movie movie,Seat seat){
+public synchronized void bookTicket(Customer customer, Movie movie,Seat seat){//synchronized locks the BookingSystem object, not the seat itself. Both threads must call the method on the same BookingSystem instance for this protection to wor
     if (seat.getIsBooked()) {
         System.out.println("Seat already booked!");
     }
